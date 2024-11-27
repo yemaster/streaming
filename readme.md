@@ -4,7 +4,7 @@ Streaming - 简约、轻量、美观的 Typecho 主题
 
 Live Demo: [https://blog.yemaster.cn](https://blog.yemaster.cn)
 
-[![Github release](https://img.shields.io/github/v/release/yemaster/streaming?color=%235e72e4&style=for-the-badge)](https://github.com/yemaster/streaming/releases) [![GitHub](https://img.shields.io/github/license/yemaster/streaming?color=blue&style=for-the-badge)](https://github.com/solstice23/argon-theme/blob/master/LICENSE) [![Author](https://img.shields.io/badge/author-yemaster-yellow?style=for-the-badge)](https://github.com/yemaster)
+[![Github release](https://img.shields.io/github/v/release/yemaster/streaming?color=%235e72e4&style=for-the-badge)](https://github.com/yemaster/streaming/releases) [![GitHub](https://img.shields.io/github/license/yemaster/streaming?color=blue&style=for-the-badge)](https://github.com/yemaster/streaming/blob/master/LICENSE) [![Author](https://img.shields.io/badge/author-yemaster-yellow?style=for-the-badge)](https://github.com/yemaster)
 
 ## 特性
 
@@ -30,3 +30,11 @@ Live Demo: [https://blog.yemaster.cn](https://blog.yemaster.cn)
 
 ## 更新日志
 
+## TODO List
+
+- 文章字体的自定义
+- 夜间模式
+- 文章目录加载过渡动画，空目录提示
+- 代码高亮主题开启关闭，公式的开启关闭，代码高亮主题自定义
+- 外部资源 cdn 链接自定义
+- 优化文章页面排版
