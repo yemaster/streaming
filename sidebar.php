@@ -5,9 +5,22 @@ if (is_array($this->options->sidebarBlock) && in_array('ShowAuthor', $this->opti
     <div style="max-width: 80%; margin: 0 auto;">
         <img src="<?php $this->options->authorImg(); ?>" width="96" height="96" style="border-radius: 50%" alt="作者头像">
         <h2 class="ax-card-title"><?php $this->options->title() ?></h2>
-        <div class="ax-card-detail"><?php $this->options->description() ?></div>
+        <div class="ax-card-detail" id="blog-description"><?php $this->options->description() ?></div>
     </div>
 </div>
+<?php 
+if ($this->options->hitokotoDescription == 'enable'):
+?>
+<script>
+fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.querySelector('#blog-description')
+      hitokoto.innerText = data.hitokoto
+    })
+    .catch(console.error)
+</script>
+<?php endif; ?>
 <?php
 endif;
 ?>

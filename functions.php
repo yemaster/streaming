@@ -4,7 +4,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /* 后台设置 */
 function themeConfig($form) {
 	//header部分
-    $authorImg = new Typecho_Widget_Helper_Form_Element_Text('authorImg', NULL, 'https://cdn.jsdelivr.net/gh/yemaster/streaming@1.0.0/imgs/imglogo.jpg', _t('作者简介头像'), _t('留空了就加载不出来啦'));
+    $authorImg = new Typecho_Widget_Helper_Form_Element_Text('authorImg', NULL, 'https://assets.yemaster.cn/imgs/imglogo.jpg', _t('作者简介头像'), _t('留空了就加载不出来啦'));
 	$form->addInput($authorImg);
 	
 	//header部分
@@ -17,6 +17,12 @@ function themeConfig($form) {
 	
     $gonganCode = new Typecho_Widget_Helper_Form_Element_Text('gonganCode', NULL, NULL, _t('公安备案号'), _t('示例：浙公网安备xxxxxxxx'));
 	$form->addInput($gonganCode);
+
+    $hitokotoDescription = new Typecho_Widget_Helper_Form_Element_Radio('hitokotoDescription', array(
+        'enable' => '启用',
+        'disable' => '不启用'
+    ), 'disable', _t('博客作者介绍启用一言 Hitokoto'));
+    $form->addInput($hitokotoDescription);
 	
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock',
         array(
