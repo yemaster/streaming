@@ -1,5 +1,10 @@
 <?php
-if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+if (is_links_page($this)) {
+    $this->need('links.php');
+    return;
+}
+?>
 <?php $this->need('header.php'); ?>
 
     <div class="ax-main__left article">

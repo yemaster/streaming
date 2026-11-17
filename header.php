@@ -1,4 +1,4 @@
-<?php if(!defined( '__TYPECHO_ROOT_DIR__'))exit;?>
+<?php if(!defined( '__TYPECHO_ROOT_DIR__'))exit; $isLinksPage = is_links_page($this); ?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="zh-Hans">
 	<head>
@@ -7,11 +7,11 @@
         <meta http-equiv="Cache-Control" content="no-transform" />  
         <meta http-equiv="Cache-Control" content="no-siteapp" />  
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title><?php $this->archiveTitle(array('category'=>_t(' %s '),'search'=>_t(' %s '),'tag'=>_t(' %s '),'author'=>_t(' %s ')),'',' - ');?> <?php $this->options->title();?></title>
+		<title><?php if($isLinksPage): ?>友情链接 - <?php else: ?><?php $this->archiveTitle(array('category'=>_t(' %s '),'search'=>_t(' %s '),'tag'=>_t(' %s '),'author'=>_t(' %s ')),'',' - ');?><?php endif; ?> <?php $this->options->title();?></title>
 		<meta name="keywords" content="<?php $this->keywords() ?>" />
 		<?php $this->header('keywords=&generator=&template=&pingback=&xmlrpc=&wlw=&commentReply=&rss1=&rss2=&atom='); ?>
 		<link rel="shortcut icon" href="/favicon.png">
-		<link rel='stylesheet' id='streaming-main-css' href='<?php $this->options->themeUrl('css/streaming.min.css?ver=1.0.0'); ?>' type='text/css' media='all' />
+		<link rel='stylesheet' id='streaming-main-css' href='<?php $this->options->themeUrl('css/streaming.min.css?ver=1.0.1'); ?>' type='text/css' media='all' />
 	</head>
 	<?php flush(); ?>
 	<body data-spy="scroll" data-target=".scrollspy">
@@ -22,14 +22,19 @@
 				        <a class="ax-navbar-item__link" href="<?php $this->options ->siteUrl(); ?>"><?php $this->options->title() ?></a>
 				    </div>
 				    <div class="ax-navbar-item">
-				        <a class="<?php if($this->is('index')): ?>ax-navbar-item__link-active <?php endif; ?>ax-navbar-item__link" href="<?php $this->options ->siteUrl(); ?>">首页</a>
+				        <a class="<?php if($this->is('index') && !$isLinksPage): ?>ax-navbar-item__link-active <?php endif; ?>ax-navbar-item__link" href="<?php $this->options ->siteUrl(); ?>">首页</a>
 				    </div>
     				<?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
     				<?php while($pages->next()): ?>
     				    <div class="ax-navbar-item">
-    				        <a class="<?php if($this->is('page', $pages->slug)): ?>ax-navbar-item__link-active <?php endif; ?>ax-navbar-item__link" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
+    				        <a class="<?php if(!$isLinksPage && $this->is('page', $pages->slug)): ?>ax-navbar-item__link-active <?php endif; ?>ax-navbar-item__link" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
     				    </div>
     				<?php endwhile; ?>
+    				<?php if($this->options->enableLinks == 'enable'): ?>
+    				    <div class="ax-navbar-item">
+    				        <a class="<?php if($isLinksPage): ?>ax-navbar-item__link-active <?php endif; ?>ax-navbar-item__link" href="<?php echo htmlspecialchars(get_links_url(), ENT_QUOTES, 'UTF-8'); ?>">友情链接</a>
+    				    </div>
+    				<?php endif; ?>
 				</div>
 				<div class="ax-navbar__right">
                     <div class="ax-navbar-item ax-menu-bar">
@@ -46,6 +51,11 @@
             				        <?php $pages->title(); ?>
             				    </a>
             				<?php endwhile; ?>
+            				<?php if($this->options->enableLinks == 'enable'): ?>
+            				    <a class="ax-navbar-dropdown__item" href="<?php echo htmlspecialchars(get_links_url(), ENT_QUOTES, 'UTF-8'); ?>">
+            				        友情链接
+            				    </a>
+            				<?php endif; ?>
                         </div>
                     </div>
 				</div>

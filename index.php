@@ -8,6 +8,10 @@
  * @link https://blog.yemaster.cn
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+if (is_links_page($this)) {
+    $this->need('links.php');
+    return;
+}
  $this->need('header.php');?>
  
     <div class="article-list ax-main__left">

@@ -49,17 +49,4 @@ endif;
     <?php
     endif;
     ?>
-    
-    <?php
-    if (is_array($this->options->sidebarBlock) && in_array('ShowAd', $this->options->sidebarBlock)):
-    ?>
-    <div class="ax-card" style="margin-top: 2rem">
-        <h2 class="ax-card-title-small">Links</h2>
-        <div class="ax-link-list ax-link-list-bordered">
-            <?php $this->options->adSidebar(); ?>
-        </div>
-    </div>
-    <?php
-    endif;
-    ?>
 </div>

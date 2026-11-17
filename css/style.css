@@ -852,6 +852,122 @@ a:hover {
     
 }
 
+.ax-friend-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.ax-friend-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    border: 1px solid #ebeef5;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .06);
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: all .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+a.ax-friend-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+    transform: translateY(-2px);
+}
+
+.ax-friend-card__bg {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: .35;
+    filter: blur(4px) saturate(1.1);
+    transform: scale(1.02);
+    transition: all .4s cubic-bezier(.4, 0, .2, 1);
+    pointer-events: none;
+    z-index: 0;
+}
+
+a.ax-friend-card:hover .ax-friend-card__bg {
+    opacity: .45;
+    filter: blur(3px) saturate(1.15);
+    transform: scale(1.05);
+}
+
+.ax-friend-card__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, .75) 0%, rgba(255, 255, 255, .45) 100%);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ax-friend-card__avatar-wrap {
+    position: relative;
+    z-index: 1;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-color: #e5e7eb;
+    border: 2px solid rgba(255, 255, 255, .85);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+}
+
+.ax-friend-card__avatar {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ax-friend-card__info {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.ax-friend-card__name {
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #212223;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color .15s cubic-bezier(.4, 0, .2, 1);
+}
+
+a.ax-friend-card:hover .ax-friend-card__name {
+    color: #1780db;
+}
+
+.ax-friend-card__desc {
+    font-size: .825rem;
+    line-height: 1.4;
+    color: #6b7280;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 @media (max-width: 768px) {
     .sticky-top {
         position: static;
@@ -876,6 +992,10 @@ a:hover {
     .ax-main__left,
     .ax-main__right {
         width: 100%;
+    }
+
+    .ax-friend-list {
+        grid-template-columns: 1fr;
     }
 
     .ax-banner__text {
